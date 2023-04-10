@@ -11,14 +11,14 @@ const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
 
 const ses = new aws.SES({
-  region: 'us-east-1',
+  region: 'eu-central-1',
 });
 
-const ORIGINS = ['https://hamishw.com', 'https://www.hamishw.com'];
+const ORIGINS = ['https://mastyka.dev', 'https://www.mastyka.dev'];
 const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
-const EMAIL = 'hello@hamishw.com';
-const FROM_EMAIL = 'mailbot@hamishw.com';
+const EMAIL = 'hello@mastyka.dev';
+const FROM_EMAIL = 'mailbot@mastyka.dev';
 const EMAIL_PATTERN = /(.+)@(.+){2,}\.(.+){2,}/;
 
 app.use(helmet());
@@ -26,11 +26,11 @@ app.use(express.json());
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!ORIGINS.includes(origin)) {
-        return callback(
-          new Error(`Not allowed by CORS. Origin must be: ${ORIGINS.join(' or ')}`)
-        );
-      }
+      // if (!ORIGINS.includes(origin)) {
+      //   return callback(
+      //     new Error(`Not allowed by CORS. Origin must be: ${ORIGINS.join(' or ')}`)
+      //   );
+      // }
 
       return callback(null, true);
     },

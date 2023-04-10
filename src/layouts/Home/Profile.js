@@ -1,4 +1,3 @@
-import profileKatakana from 'assets/katakana-profile.svg?url';
 import profileImgLarge from 'assets/profile-large.jpg';
 import profileImgPlaceholder from 'assets/profile-placeholder.jpg';
 import profileImg from 'assets/profile.jpg';
@@ -21,16 +20,18 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m Hamish, currently I live in Sydney working as a senior product designer at{' '}
-      <Link href="https://www.qwilr.com">Qwilr</Link>. My projects include UX design, UI
-      animations, and icon illustration. Being comfortable with code allows me to rapidly
-      prototype and validate experiences. If you’re interested in the tools and software I
-      use check out my <Link href="/uses">uses page</Link>.
-    </Text>
-    <Text className={styles.description} data-visible={visible} size="l" as="p">
-      In my spare time I like to practice Brazilian Jiu Jitsu, play video games, and{' '}
-      <Link href="/projects/volkihar-knight">make mods</Link>. I’m always down for hearing
-      about new projects, so feel free to drop me a line.
+      My name is Raman Mastyka and I am a JavaScript Developer. I have experience with web
+      development using JavaScript/ES9, HTML5, CSS3, jQuery, and React. I am also skilled
+      in server development using NodeJS and ExpressJS. I have experience with databases
+      such as Redis and Clickhouse. My preferred IDE is VSCode and I am proficient in
+      using Git, Bitbucket, Gulp, Webpack, and Jasmine. I have completed courses in Redis
+      and MongoDB through online universities. I have also completed courses in
+      development with JavaScript, HTML5, and CSS through the Educational Center of HTP.
+      In my current role as a Front-end Developer for Nextapp, I have created UI for
+      portals and REST APIs, and worked with Redis, Clickhouse, and Google DialogFlow.
+      Prior to my career in development, I worked as a power engineer at Belaruskali.
+      Outside of work, I enjoy cycling, running (having been an under-19 champion of
+      Belarus), and swimming.
     </Text>
   </Fragment>
 );
@@ -93,9 +94,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   viewBox="0 0 135 765"
                   className={styles.svg}
                   data-visible={visible}
-                >
-                  <use href={`${profileKatakana}#katakana-profile`} />
-                </svg>
+                ></svg>
               </div>
             </div>
           </div>

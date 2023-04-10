@@ -1,10 +1,6 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "homepage": "https://hamishw.com",
-  "description": "Portfolio site for Hamish Williams",
-  "repository": "https://github.com/HamishMW/portfolio.git",
-  "author": "Hamish Williams <hello@hamishw.com>",
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
     "@storybook/addon-a11y": "^6.5.10",
@@ -37,21 +33,18 @@
     "stylelint-config-standard": "^26.0.0"
   },
   "dependencies": {
-    "fathom-client": "^3.5.0",
     "framer-motion": "^7.1.0",
     "mdx-bundler": "^9.0.1",
-    "next": "^12.2.5",
+    "next": "^13.3.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "three": "^0.146.0",
-    "three-stdlib": "^2.18.1"
+    "react-dom": "^18.2.0"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export -o build/",
-    "build:storybook": "build-storybook -o build-storybook && node scripts/draco-storybook",
-    "deploy": "aws s3 sync --delete build/ s3://hamish-portfolio-site",
-    "deploy:storybook": "aws s3 sync --delete build-storybook s3://hamish-portfolio-storybook",
+    "build:storybook": "build-storybook -o build-storybook",
+    "deploy": "aws s3 sync --delete build/ s3://mastyka-portfolio-site",
+    "deploy:storybook": "aws s3 sync --delete build-storybook s3://mastyka-portfolio-storybook",
     "deploy:functions": "cd functions && npm run deploy",
     "start": "next start",
     "test": "echo 'write some tests'",

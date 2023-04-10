@@ -8,22 +8,17 @@ import { Transition } from 'components/Transition';
 import { VisuallyHidden } from 'components/VisuallyHidden';
 import { AnimatePresence } from 'framer-motion';
 import { useInterval, usePrevious, useScrollToHash } from 'hooks';
-import dynamic from 'next/dynamic';
 import RouterLink from 'next/link';
 import { Fragment, useEffect, useState } from 'react';
 import { cssProps } from 'utils/style';
 import styles from './Intro.module.css';
-
-const DisplacementSphere = dynamic(() =>
-  import('layouts/Home/DisplacementSphere').then(mod => mod.DisplacementSphere)
-);
 
 export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...rest }) {
   const theme = useTheme();
   const [disciplineIndex, setDisciplineIndex] = useState(0);
   const prevTheme = usePrevious(theme);
   const introLabel = [disciplines.slice(0, -1).join(', '), disciplines.slice(-1)[0]].join(
-    ', and '
+    ' '
   );
   const currentDiscipline = disciplines.find((item, index) => index === disciplineIndex);
   const titleId = `${id}-title`;
@@ -62,14 +57,13 @@ export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...r
       <Transition in key={theme.themeId} timeout={3000}>
         {(visible, status) => (
           <Fragment>
-            <DisplacementSphere />
             <header className={styles.text}>
               <h1 className={styles.name} data-visible={visible} id={titleId}>
-                <DecoderText text="Hamish Williams" delay={300} />
+                <DecoderText text="Raman Mastyka" delay={300} />
               </h1>
               <Heading level={0} as="h2" className={styles.title}>
                 <VisuallyHidden className={styles.label}>
-                  {`Designer + ${introLabel}`}
+                  {`Developer ${introLabel}`}
                 </VisuallyHidden>
                 <span aria-hidden className={styles.row}>
                   <span
@@ -77,7 +71,7 @@ export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...r
                     data-status={status}
                     style={cssProps({ delay: tokens.base.durationXS })}
                   >
-                    Designer
+                    Developer
                   </span>
                   <span className={styles.line} data-status={status} />
                 </span>
@@ -94,7 +88,7 @@ export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...r
                           <span
                             aria-hidden
                             className={styles.word}
-                            data-plus={true}
+                            data-plus={false}
                             data-status={status}
                             style={cssProps({ delay: tokens.base.durationL })}
                           >

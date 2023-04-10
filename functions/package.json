@@ -1,26 +1,26 @@
 {
   "name": "functions",
-  "description": "Serverless functions for hamishw.com using AWS lambda",
+  "description": "Serverless functions for mastyka.dev using AWS lambda",
   "scripts": {
     "deploy": "serverless deploy --stage production",
     "deploy:api": "serverless deploy function --function api --stage production",
     "deploy:headers": "serverless deploy function --function headers --stage production"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "^3.145.0",
+    "@aws-sdk/client-ses": "^3.309.0",
     "cors": "^2.8.5",
-    "dompurify": "^2.3.10",
-    "express": "^4.18.1",
-    "helmet": "^5.1.1",
-    "jsdom": "^20.0.0",
-    "serverless-http": "^3.0.2"
+    "dompurify": "^3.0.1",
+    "express": "^4.18.2",
+    "helmet": "^6.1.2",
+    "jsdom": "^21.1.1",
+    "serverless-http": "^3.2.0"
   },
   "devDependencies": {
     "eslint": "^8.21.0",
     "eslint-plugin-promise": "^6.0.0"
   },
   "engines": {
-    "node": "14.19.1"
+    "node": "16"
   },
   "private": true
 }
