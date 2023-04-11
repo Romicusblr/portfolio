@@ -1,4 +1,6 @@
 module.exports = {
+  output: 'export',
+  distDir: 'build',
   reactStrictMode: true,
   trailingSlash: true,
   pageExtensions: ['page.js', 'api.js'],
