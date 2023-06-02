@@ -5,10 +5,10 @@ plugins:
 
 provider:
   name: aws
-  profile: rm_aws
+  profile: ${AWS_PROFILE}
   runtime: nodejs18.x
   stage: dev
-  region: eu-central-1
+  region: ${AWS_REGION}
   memorySize: 128
 
 # functions:
