@@ -3,10 +3,10 @@ export const navLinks = [
     label: 'Details',
     pathname: '/#details',
   },
-  {
-    label: 'Contact',
-    pathname: '/contact',
-  },
+  // {
+  //   label: 'Contact',
+  //   pathname: '/contact',
+  // },
 ];
 
 export const socialLinks = [
