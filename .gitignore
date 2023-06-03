@@ -65,3 +65,7 @@ public/draco/
 public/og
 .serverless
 .next
+
+docker-compose.*
+!docker-compose.dev.yaml
+docker/

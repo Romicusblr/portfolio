@@ -1,6 +1,5 @@
 module.exports = {
-  output: 'export',
-  distDir: 'build',
+  output: 'standalone',
   reactStrictMode: true,
   trailingSlash: true,
   pageExtensions: ['page.js', 'api.js'],
