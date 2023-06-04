@@ -14,15 +14,14 @@ import { useRouter } from 'next/router';
 import { Fragment, createContext, useEffect, useReducer } from 'react';
 import { msToNum } from 'utils/style';
 import { ScrollRestore } from '../layouts/App/ScrollRestore';
-import Script from 'next/script';
-import * as gtag from '../lib/gtag';
+import { GoogleAnalytics } from 'components/GoogleAnalytics';
 
 export const AppContext = createContext({});
 
 const App = ({ Component, pageProps }) => {
   const [storedTheme] = useLocalStorage('theme', 'dark');
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { route, asPath, events } = useRouter();
+  const { route, asPath } = useRouter();
   const canonicalRoute = route === '/' ? '' : `${asPath}`;
   useFoucFix();
 
@@ -30,47 +29,18 @@ const App = ({ Component, pageProps }) => {
     dispatch({ type: 'setTheme', value: storedTheme || 'dark' });
   }, [storedTheme]);
 
-  useEffect(() => {
-    const handleRouteChange = url => {
-      gtag.pageview(url);
-    };
-    events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [events]);
-
   return (
     <AppContext.Provider value={{ ...state, dispatch }}>
       <ThemeProvider themeId={state.theme}>
         <LazyMotion features={domAnimation}>
           <Fragment>
+            <GoogleAnalytics />
             <Head>
               <link
                 rel="canonical"
                 href={`${process.env.NEXT_PUBLIC_WEBSITE_URL}${canonicalRoute}`}
               />
             </Head>
-            {/* Global Site Tag (gtag.js) - Google Analytics */}
-            <Script
-              id="gtag-script-1"
-              strategy="afterInteractive"
-              src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
-            />
-            <Script
-              id="gtag-script-2"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${gtag.GA_TRACKING_ID}', {
-              page_path: window.location.pathname,
-            });
-          `,
-              }}
-            />
             <VisuallyHidden
               showOnFocus
               as="a"

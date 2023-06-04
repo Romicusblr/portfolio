@@ -9,6 +9,10 @@
 @custom-media --mediaTouch (pointer: coarse);
 @custom-media --mediaNoTouch (pointer: fine);
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --mobileNavOffset: calc(var(--spaceOuter) * 2 + var(--space2XL));
 }
