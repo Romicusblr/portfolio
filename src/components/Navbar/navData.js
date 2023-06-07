@@ -17,12 +17,12 @@ export const socialLinks = [
   },
   {
     label: 'Facebook',
-    url: 'https://github.com/Romicusblr',
+    url: 'https://facebook.com/raman.mastyka',
     icon: 'facebook',
   },
   {
     label: 'Linkedin',
-    url: 'https://www.linkedin.com/in/raman-mastyka-55805a9/',
+    url: 'https://linkedin.com/in/raman-mastyka-55805a9/',
     icon: 'linkedin',
   },
 ];
