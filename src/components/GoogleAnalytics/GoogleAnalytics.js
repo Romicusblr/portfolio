@@ -1,27 +1,27 @@
-import Script from 'next/script';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import * as gtag from 'lib/gtag';
+'use client';
 
-const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
+import Script from 'next/script';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
+import { pageview } from 'lib/gtag';
+
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export function GoogleAnalytics() {
-  const { events } = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    const handleRouteChange = url => {
-      gtag.pageview(url);
-    };
-    events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [events]);
+    const url = pathname + searchParams.toString();
+
+    pageview(url);
+  }, [pathname, searchParams]);
+
   return (
     <>
       <Script
         strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
       />
       <Script
         id="google-analytics"
@@ -36,7 +36,7 @@ export function GoogleAnalytics() {
                     'analytics_storage': 'denied'
                 });
                 
-                gtag('config', '${GA_TRACKING_ID}', {
+                gtag('config', '${GA_MEASUREMENT_ID}', {
                     page_path: window.location.pathname,
                 });
                 `,
