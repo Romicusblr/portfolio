@@ -1,2 +1,4 @@
 node_modules
 .next
+[Dd]ocker*
+makefile
